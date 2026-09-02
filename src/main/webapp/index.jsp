@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NexusShop · Modern E‑Commerce</title>
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <title>Nexus · graphical e‑commerce</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
@@ -13,18 +13,22 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     :root {
-      --bg: #f8faff;
+      --bg: #f0f4fe;
       --surface: #ffffff;
-      --primary: #0b1e33;
+      --primary: #0b1a2e;
       --accent: #2a7de1;
-      --accent-light: #e9f0fe;
-      --muted: #5e6f8d;
-      --shadow: 0 12px 30px -8px rgba(0, 20, 40, 0.08);
-      --radius: 20px;
-      --radius-sm: 14px;
-      --transition: all 0.2s ease;
+      --accent-glow: #d4e2fc;
+      --muted: #5b6f8c;
+      --radius-xl: 32px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --shadow-card: 0 20px 40px -12px rgba(0, 20, 40, 0.12);
+      --shadow-hover: 0 28px 56px -16px rgba(42, 125, 225, 0.22);
+      --transition: 0.3s cubic-bezier(0.2, 0, 0, 1);
     }
+
     body {
       font-family: 'Inter', -apple-system, system-ui, sans-serif;
       background: var(--bg);
@@ -32,83 +36,90 @@
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
+
     .container {
-      max-width: 1280px;
+      max-width: 1340px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
     }
-    /* header */
+
+    /* ---- header with glass effect ---- */
     header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,0,0,0.03);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(18px) saturate(1.3);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 60;
     }
+
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
+      padding: 10px 0;
       gap: 12px;
       flex-wrap: wrap;
     }
+
     .brand {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-    .brand .accent {
-      color: var(--accent);
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
     }
     .brand i {
-      color: var(--accent);
-      font-size: 1.3rem;
+      background: var(--accent);
+      color: white;
+      padding: 6px 8px;
+      border-radius: 14px;
+      font-size: 1.2rem;
     }
+
     .nav-desktop {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 2px;
     }
     .nav-desktop a {
-      padding: 8px 14px;
-      border-radius: 40px;
+      padding: 8px 20px;
+      border-radius: 60px;
       font-weight: 500;
       font-size: 0.95rem;
       color: var(--primary);
       transition: var(--transition);
       text-decoration: none;
     }
-    .nav-desktop a:hover,
-    .nav-desktop a:focus {
-      background: var(--accent-light);
+    .nav-desktop a:hover {
+      background: rgba(42, 125, 225, 0.10);
       color: var(--accent);
     }
+
     .search-wrap {
       display: flex;
       align-items: center;
-      background: var(--bg);
+      background: white;
       border-radius: 60px;
-      padding: 4px 6px 4px 18px;
-      border: 1px solid transparent;
+      padding: 4px 6px 4px 22px;
+      border: 1px solid rgba(42, 125, 225, 0.10);
       transition: var(--transition);
       min-width: 200px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
     .search-wrap:focus-within {
       border-color: var(--accent);
-      background: white;
-      box-shadow: 0 4px 12px rgba(42, 125, 225, 0.08);
+      box-shadow: 0 6px 24px rgba(42, 125, 225, 0.12);
     }
     .search-wrap input {
       border: none;
       background: transparent;
-      padding: 8px 0;
+      padding: 10px 0;
       font-size: 0.95rem;
       width: 100%;
       outline: none;
@@ -118,21 +129,22 @@
       background: var(--accent);
       border: none;
       color: white;
-      width: 38px;
-      height: 38px;
-      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      border-radius: 60px;
       cursor: pointer;
       font-size: 1rem;
       transition: var(--transition);
     }
     .search-wrap button:hover {
       background: #1a5fb0;
-      transform: scale(0.96);
+      transform: scale(0.94);
     }
+
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
     }
     .icon-btn {
       background: transparent;
@@ -140,38 +152,40 @@
       font-size: 1.2rem;
       color: var(--primary);
       padding: 8px;
-      border-radius: 40px;
+      border-radius: 60px;
       cursor: pointer;
       transition: var(--transition);
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
     .icon-btn:hover {
-      background: var(--accent-light);
+      background: rgba(42, 125, 225, 0.08);
       color: var(--accent);
     }
+
     .cart-wrapper {
       position: relative;
     }
     .cart-badge {
       position: absolute;
       top: -2px;
-      right: -4px;
+      right: -2px;
       background: var(--accent);
       color: white;
       font-size: 0.7rem;
       font-weight: 700;
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 8px rgba(42, 125, 225, 0.3);
+      box-shadow: 0 4px 12px rgba(42, 125, 225, 0.3);
     }
+
     .mobile-toggle {
       display: none;
       background: transparent;
@@ -180,95 +194,154 @@
       color: var(--primary);
       cursor: pointer;
     }
-    /* mobile menu */
+
     .mobile-menu {
       display: none;
       background: white;
-      border-top: 1px solid rgba(0,0,0,0.03);
-      padding: 18px 0;
+      border-top: 1px solid rgba(0,0,0,0.02);
+      padding: 20px 0;
     }
     .mobile-menu a {
       display: block;
-      padding: 12px 0;
+      padding: 14px 0;
       font-weight: 500;
       border-bottom: 1px solid #f0f4fe;
       text-decoration: none;
       color: var(--primary);
     }
-    .mobile-menu a:last-child {
-      border-bottom: none;
-    }
-    /* hero */
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ---- hero with graphic elements ---- */
     .hero {
-      background: linear-gradient(145deg, #0b1e33 0%, #123456 100%);
-      border-radius: var(--radius);
-      padding: 60px 40px;
-      margin: 24px 0 32px;
+      background: linear-gradient(145deg, #0b1a2e 0%, #1d3853 100%);
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      margin: 28px 0 44px;
       color: white;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(42,125,225,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: 20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
     .hero-content {
-      max-width: 600px;
+      max-width: 540px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.10);
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
     }
     .hero-content h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.2rem;
+      line-height: 1.1;
+      margin-bottom: 14px;
       letter-spacing: -0.02em;
     }
+    .hero-content h1 span {
+      background: linear-gradient(120deg, #82b1ff, #a0c4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .hero-content p {
-      opacity: 0.85;
+      opacity: 0.8;
       font-size: 1.1rem;
-      margin-bottom: 24px;
-      max-width: 480px;
+      margin-bottom: 28px;
+      max-width: 420px;
     }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
+      gap: 10px;
+      padding: 14px 34px;
       border-radius: 60px;
       font-weight: 600;
-      border: none;
       font-size: 0.95rem;
+      border: none;
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none;
     }
     .btn-primary {
       background: white;
-      color: #0b1e33;
+      color: #0b1a2e;
     }
     .btn-primary:hover {
-      background: #eef4ff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      background: #f0f5ff;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.20);
     }
-    .btn-outline-light {
+    .btn-ghost {
       background: transparent;
-      border: 2px solid rgba(255,255,255,0.25);
+      border: 2px solid rgba(255,255,255,0.15);
       color: white;
     }
-    .btn-outline-light:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: white;
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.4);
     }
-    .hero-illustration i {
-      font-size: 6rem;
-      opacity: 0.2;
+    .hero-graphic {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-graphic .orb {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 30% 30%, rgba(42,125,225,0.6), rgba(42,125,225,0.1));
+      border-radius: 50%;
+      filter: blur(2px);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-graphic i {
+      font-size: 5rem;
+      opacity: 0.15;
       color: white;
     }
-    /* section */
+
+    /* ---- sections ---- */
     .section {
       margin: 48px 0;
     }
@@ -276,102 +349,136 @@
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
       flex-wrap: wrap;
       gap: 12px;
     }
     .section-header h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem;
       font-weight: 600;
     }
     .section-header .muted {
       color: var(--muted);
       font-weight: 400;
-      font-size: 0.95rem;
     }
+
+    /* categories with gradient cards */
     .grid-categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 18px;
     }
     .cat-card {
       background: var(--surface);
-      padding: 22px 10px;
-      border-radius: var(--radius-sm);
+      padding: 26px 12px;
+      border-radius: var(--radius-lg);
       text-align: center;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-card);
       transition: var(--transition);
       cursor: default;
       border: 1px solid rgba(0,0,0,0.02);
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(42,125,225,0.03), transparent);
+      pointer-events: none;
     }
     .cat-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 35px -10px rgba(0, 20, 40, 0.12);
-      border-color: var(--accent-light);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent-glow);
     }
     .cat-card i {
-      font-size: 2.2rem;
+      font-size: 2.6rem;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: block;
     }
     .cat-card h4 {
       font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-size: 1rem;
     }
     .cat-card .muted {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--muted);
     }
-    /* products */
+
+    /* products with graphical flair */
     .grid-products {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 26px;
     }
     .product-card {
       background: var(--surface);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-card);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
       border: 1px solid rgba(0,0,0,0.02);
+      position: relative;
     }
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.12);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
     }
-    .product-card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
+    .product-card .img-wrap {
+      position: relative;
+      overflow: hidden;
       background: #f0f4fe;
     }
+    .product-card .img-wrap img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .product-card:hover .img-wrap img {
+      transform: scale(1.02);
+    }
+    .product-card .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--accent);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(42,125,225,0.2);
+    }
     .product-body {
-      padding: 16px 16px 12px;
+      padding: 16px 16px 8px;
       flex: 1;
     }
     .product-body h5 {
       font-weight: 600;
       font-size: 1rem;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .product-body .category-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 8px;
+      letter-spacing: 0.04em;
     }
     .price-row {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 10px;
     }
     .price-current {
       font-weight: 700;
@@ -384,27 +491,27 @@
     }
     .rating {
       color: #f4b642;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 1px;
     }
     .product-footer {
       padding: 8px 16px 16px;
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
     .product-footer .add-btn {
       flex: 1;
       background: var(--primary);
       color: white;
       border: none;
-      padding: 10px;
-      border-radius: 40px;
+      padding: 12px;
+      border-radius: 60px;
       font-weight: 600;
       font-size: 0.9rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       cursor: pointer;
       transition: var(--transition);
     }
@@ -414,8 +521,8 @@
     .product-footer .wish-btn {
       background: transparent;
       border: 1px solid #e9edf4;
-      width: 44px;
-      border-radius: 40px;
+      width: 50px;
+      border-radius: 60px;
       cursor: pointer;
       transition: var(--transition);
       font-size: 1rem;
@@ -426,32 +533,45 @@
       border-color: #ffb3b3;
       color: #e54a4a;
     }
-    /* deal banner */
+
+    /* deal banner with graphic overlay */
     .deal-banner {
-      background: linear-gradient(135deg, #f0f7ff, #ffffff);
-      border-radius: var(--radius);
+      background: white;
+      border-radius: var(--radius-xl);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 24px;
-      padding: 30px 32px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(42, 125, 225, 0.06);
+      gap: 30px;
+      padding: 28px 36px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(42,125,225,0.06);
+      position: relative;
+      overflow: hidden;
     }
-    .deal-banner .deal-img {
-      flex: 1 1 200px;
+    .deal-banner::before {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(42,125,225,0.05), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
-    .deal-banner .deal-img i {
+    .deal-banner .deal-icon i {
       font-size: 5rem;
       color: var(--accent);
-      opacity: 0.3;
+      opacity: 0.15;
     }
     .deal-banner .deal-content {
       flex: 2;
+      position: relative;
+      z-index: 2;
     }
     .deal-banner .deal-content h3 {
-      font-size: 1.8rem;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem;
     }
     .timer-box {
       display: flex;
@@ -461,14 +581,14 @@
     .time-unit {
       background: var(--primary);
       color: white;
-      padding: 8px 14px;
-      border-radius: 12px;
+      padding: 8px 18px;
+      border-radius: var(--radius-md);
       text-align: center;
-      min-width: 64px;
+      min-width: 72px;
     }
     .time-unit span {
       display: block;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
       line-height: 1.2;
     }
@@ -480,11 +600,11 @@
     .deal-price {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       flex-wrap: wrap;
     }
     .deal-price .big {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 700;
     }
     .deal-price .old {
@@ -495,86 +615,106 @@
     .deal-price .badge {
       background: #e74c3c;
       color: white;
-      padding: 4px 14px;
-      border-radius: 40px;
+      padding: 4px 18px;
+      border-radius: 60px;
       font-weight: 700;
       font-size: 0.8rem;
     }
-    /* testimonials */
+
+    /* testimonials with gradient avatars */
     .testimonials-scroll {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       overflow-x: auto;
       padding: 8px 4px 20px;
       scrollbar-width: thin;
     }
     .testimonial-card {
-      min-width: 260px;
+      min-width: 280px;
       background: var(--surface);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
       border: 1px solid rgba(0,0,0,0.02);
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-hover);
     }
     .testimonial-card .stars {
       color: #f4b642;
       letter-spacing: 2px;
     }
     .testimonial-card p {
-      margin: 10px 0 12px;
+      margin: 12px 0 16px;
       font-size: 0.95rem;
-      color: #1f2a3e;
     }
     .testimonial-card .person {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
     }
     .testimonial-card .person .avatar {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-light);
-      border-radius: 40px;
+      width: 48px;
+      height: 48px;
+      border-radius: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      color: var(--accent);
+      color: white;
+      background: linear-gradient(135deg, var(--accent), #6aa6ff);
     }
-    /* newsletter */
+
+    /* newsletter with graphical bg */
     .newsletter-box {
       background: var(--primary);
-      border-radius: var(--radius);
-      padding: 40px 32px;
+      border-radius: var(--radius-xl);
+      padding: 52px 36px;
       color: white;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-box::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(42,125,225,0.08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
     .newsletter-box h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
     }
     .newsletter-box p {
       opacity: 0.8;
-      margin: 6px 0 20px;
+      margin: 6px 0 26px;
     }
     .newsletter-form {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
     }
     .newsletter-form input {
-      padding: 14px 20px;
+      padding: 16px 26px;
       border-radius: 60px;
       border: none;
-      min-width: 260px;
+      min-width: 300px;
       font-size: 1rem;
     }
     .newsletter-form button {
       background: white;
       color: var(--primary);
       border: none;
-      padding: 14px 32px;
+      padding: 16px 40px;
       border-radius: 60px;
       font-weight: 700;
       cursor: pointer;
@@ -585,29 +725,30 @@
       transform: scale(0.97);
     }
     #newsletterMsg {
-      margin-top: 14px;
+      margin-top: 18px;
       font-size: 0.95rem;
     }
+
     /* footer */
     footer {
-      margin-top: 40px;
-      padding: 40px 0 24px;
+      margin-top: 48px;
+      padding: 48px 0 28px;
       border-top: 1px solid rgba(0,0,0,0.04);
     }
     .footer-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 36px;
+      gap: 40px;
       justify-content: space-between;
     }
     .footer-col p {
       color: var(--muted);
-      max-width: 280px;
+      max-width: 260px;
       margin-top: 8px;
     }
     .footer-social a {
       color: var(--muted);
-      margin-right: 14px;
+      margin-right: 18px;
       font-size: 1.2rem;
       transition: var(--transition);
     }
@@ -616,7 +757,7 @@
     }
     .footer-links {
       display: flex;
-      gap: 48px;
+      gap: 52px;
       flex-wrap: wrap;
     }
     .footer-links div {
@@ -624,13 +765,13 @@
     }
     .footer-links h6 {
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .footer-links a {
       display: block;
       color: var(--muted);
       text-decoration: none;
-      padding: 4px 0;
+      padding: 6px 0;
       font-size: 0.9rem;
     }
     .footer-links a:hover {
@@ -638,28 +779,29 @@
     }
     .footer-copy {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 32px;
       color: var(--muted);
       font-size: 0.85rem;
     }
 
     /* responsive */
-    @media (max-width: 920px) {
+    @media (max-width: 960px) {
       .nav-desktop { display: none; }
       .mobile-toggle { display: inline-flex; }
       .search-wrap { min-width: 140px; }
     }
-    @media (max-width: 640px) {
-      .hero { padding: 32px 20px; text-align: center; justify-content: center; }
-      .hero-content h1 { font-size: 2rem; }
+    @media (max-width: 700px) {
+      .hero { padding: 32px 24px; text-align: center; justify-content: center; }
+      .hero-content h1 { font-size: 2.4rem; }
       .hero-content p { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
+      .hero-graphic { display: none; }
       .deal-banner { flex-direction: column; text-align: center; }
       .timer-box { justify-content: center; }
       .grid-products { grid-template-columns: 1fr 1fr; }
       .footer-grid { flex-direction: column; }
     }
-    @media (max-width: 440px) {
+    @media (max-width: 480px) {
       .grid-products { grid-template-columns: 1fr; }
       .header-inner { flex-wrap: wrap; }
       .search-wrap { order: 3; flex: 1 1 100%; }
@@ -669,9 +811,9 @@
 <body>
   <header>
     <div class="container header-inner">
-      <div style="display:flex;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:6px;">
         <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-        <a href="#" class="brand"><i class="fas fa-cube"></i> Nexus<span class="accent">Shop</span></a>
+        <a href="#" class="brand"><i class="fas fa-cube"></i> Nexus</a>
       </div>
 
       <nav class="nav-desktop">
@@ -681,7 +823,7 @@
         <a href="#"><i class="fas fa-fire"></i> Trending</a>
       </nav>
 
-      <div style="display:flex;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:6px;">
         <div class="search-wrap">
           <input type="search" id="searchInput" placeholder="Search..." aria-label="Search">
           <button id="searchBtn"><i class="fas fa-arrow-right"></i></button>
@@ -707,25 +849,28 @@
   </header>
 
   <main class="container">
-    <!-- Hero -->
+    <!-- Hero with graphic -->
     <section class="hero">
       <div class="hero-content">
-        <h1>New Season <br>Premium Picks</h1>
-        <p>Discover curated fashion, tech & accessories. Free shipping on orders over $50.</p>
+        <div class="tag"><i class="fas fa-star" style="margin-right:6px;"></i> New collection</div>
+        <h1>Premium <span>essentials</span> for every day</h1>
+        <p>Curated style, tech & accessories — with free shipping on all orders.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop Now</button>
-          <button class="btn btn-outline-light" id="exploreDeals">Explore Deals</button>
+          <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop now</button>
+          <button class="btn btn-ghost" id="exploreDeals">Explore</button>
         </div>
       </div>
-      <div class="hero-illustration">
-        <i class="fas fa-shopping-bag"></i>
+      <div class="hero-graphic">
+        <div class="orb"></div>
+        <i class="fas fa-cube"></i>
+        <div class="orb" style="width:70px;height:70px;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent);"></div>
       </div>
     </section>
 
     <!-- Categories -->
     <section id="categories" class="section">
       <div class="section-header">
-        <h2>Shop by Category</h2>
+        <h2>Shop by category</h2>
         <span class="muted">Browse collections</span>
       </div>
       <div class="grid-categories" id="categoriesGrid"></div>
@@ -734,8 +879,8 @@
     <!-- Products -->
     <section class="section">
       <div class="section-header">
-        <h2>Trending Now</h2>
-        <span class="muted">Popular this week</span>
+        <h2>Trending now</h2>
+        <span class="muted">Most popular this week</span>
       </div>
       <div class="grid-products" id="productsGrid"></div>
     </section>
@@ -743,11 +888,11 @@
     <!-- Deal banner -->
     <section id="deals" class="section">
       <div class="deal-banner">
-        <div class="deal-img"><i class="fas fa-laptop"></i></div>
+        <div class="deal-icon"><i class="fas fa-laptop"></i></div>
         <div class="deal-content">
-          <h3>Flash Sale: MacBook Air M2</h3>
-          <p class="muted">Ultra‑thin, powerful, and now with a special discount.</p>
-          <div class="timer-box" id="timerBox">
+          <h3>Flash sale: MacBook Air M2</h3>
+          <p class="muted">Sleek, powerful, and now at a special price.</p>
+          <div class="timer-box">
             <div class="time-unit"><span id="dealDays">0</span><small>Days</small></div>
             <div class="time-unit"><span id="dealHours">00</span><small>Hrs</small></div>
             <div class="time-unit"><span id="dealMinutes">00</span><small>Min</small></div>
@@ -758,9 +903,9 @@
             <span class="old">$1,199</span>
             <span class="badge">-17%</span>
           </div>
-          <div style="margin-top: 12px; display:flex; gap:12px; flex-wrap:wrap;">
-            <button class="btn btn-primary" id="buyDeal"><i class="fas fa-cart-plus"></i> Buy Now</button>
-            <span style="background:#f0f4fe; padding:8px 16px; border-radius:40px; font-weight:500;">Only 12 left</span>
+          <div style="margin-top:16px; display:flex; gap:14px; flex-wrap:wrap;">
+            <button class="btn btn-primary" id="buyDeal" style="background:var(--primary);color:white;"><i class="fas fa-cart-plus"></i> Buy now</button>
+            <span style="background:var(--accent-glow); padding:8px 22px; border-radius:60px; font-weight:600;">Only 12 left</span>
           </div>
         </div>
       </div>
@@ -769,24 +914,24 @@
     <!-- Testimonials -->
     <section class="section">
       <div class="section-header">
-        <h2>Customer Stories</h2>
+        <h2>Customer stories</h2>
         <span class="muted">Real reviews</span>
       </div>
       <div class="testimonials-scroll" id="testimonials">
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
-          <p>“Fast shipping and the quality is incredible. Will order again!”</p>
-          <div class="person"><div class="avatar">AM</div><div><strong>Ava M.</strong><div style="font-size:0.8rem;color:var(--muted)">Verified</div></div></div>
+          <p>“Incredible quality and super fast delivery. I’m a fan!”</p>
+          <div class="person"><div class="avatar">AM</div><div><strong>Ava M.</strong><div style="font-size:0.75rem;color:var(--muted)">Verified</div></div></div>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★☆</div>
-          <p>“Great selection, easy checkout. The customer support was very helpful.”</p>
-          <div class="person"><div class="avatar">ML</div><div><strong>Michael L.</strong><div style="font-size:0.8rem;color:var(--muted)">Frequent buyer</div></div></div>
+          <p>“Smooth checkout, great selection. Support was very helpful.”</p>
+          <div class="person"><div class="avatar">ML</div><div><strong>Michael L.</strong><div style="font-size:0.75rem;color:var(--muted)">Frequent buyer</div></div></div>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
           <p>“Love the design and the prices. My new favourite store.”</p>
-          <div class="person"><div class="avatar">SR</div><div><strong>Sophia R.</strong><div style="font-size:0.8rem;color:var(--muted)">First time</div></div></div>
+          <div class="person"><div class="avatar">SR</div><div><strong>Sophia R.</strong><div style="font-size:0.75rem;color:var(--muted)">First time</div></div></div>
         </div>
       </div>
     </section>
@@ -795,7 +940,7 @@
     <section class="section">
       <div class="newsletter-box">
         <h3>Stay in the loop</h3>
-        <p>Subscribe for exclusive offers & new arrivals</p>
+        <p>Subscribe for exclusive offers and early access</p>
         <form class="newsletter-form" id="newsletterForm" onsubmit="return false;">
           <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
           <button id="subscribeBtn">Subscribe</button>
@@ -808,8 +953,8 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-col">
-        <div style="font-weight:700; font-size:1.3rem;"><i class="fas fa-cube" style="color:var(--accent);"></i> NexusShop</div>
-        <p>Modern e‑commerce demo built with care.</p>
+        <div style="font-weight:700; font-size:1.5rem; font-family:'Space Grotesk',sans-serif;"><i class="fas fa-cube" style="color:var(--accent);"></i> Nexus</div>
+        <p>Modern e‑commerce demo with a graphical edge.</p>
         <div class="footer-social">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -821,12 +966,12 @@
         <div><h6>Support</h6><a href="#">Help</a><a href="#">Returns</a><a href="#">Contact</a></div>
       </div>
     </div>
-    <div class="footer-copy">© <span id="year"></span> NexusShop. All rights reserved.</div>
+    <div class="footer-copy">© <span id="year"></span> Nexus. All rights reserved.</div>
   </footer>
 
   <script>
     (function() {
-      // ------ DATA ------
+      // -------- DATA --------
       const CATEGORIES = [
         { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-alt' },
         { id: 'laptops', name: 'Laptops', icon: 'fa-laptop' },
@@ -837,58 +982,4 @@
       ];
 
       const PRODUCTS = [
-        { id: 1, title: 'iPhone 14 Pro Max', price: 1099, oldPrice: 1199, rating: 5, reviews: 128, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=400&q=80', category: 'phones' },
-        { id: 2, title: 'MacBook Pro 14"', price: 1999, oldPrice: null, rating: 4, reviews: 86, img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80', category: 'laptops' },
-        { id: 3, title: 'Apple Watch S8', price: 349, oldPrice: 399, rating: 5, reviews: 214, img: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=400&q=80', category: 'accessories' },
-        { id: 4, title: 'Nike Air Max 270', price: 150, oldPrice: null, rating: 4, reviews: 53, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=80', category: 'footwear' },
-        { id: 5, title: 'Sony A7 IV', price: 2499, oldPrice: null, rating: 5, reviews: 42, img: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=80', category: 'gadgets' },
-        { id: 6, title: 'Chanel No.5', price: 120, oldPrice: null, rating: 5, reviews: 189, img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=400&q=80', category: 'accessories' },
-        { id: 7, title: 'Travel Backpack', price: 79, oldPrice: 99, rating: 4, reviews: 67, img: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=400&q=80', category: 'accessories' },
-        { id: 8, title: 'Sony WH-1000XM5', price: 399, oldPrice: null, rating: 5, reviews: 156, img: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=400&q=80', category: 'gadgets' }
-      ];
-
-      // ------ STATE ------
-      let cartCount = 0;
-      const cartCountEl = document.getElementById('cartCount');
-      const categoriesGrid = document.getElementById('categoriesGrid');
-      const productsGrid = document.getElementById('productsGrid');
-      const searchInput = document.getElementById('searchInput');
-
-      // ------ RENDER ------
-      function renderCategories() {
-        categoriesGrid.innerHTML = CATEGORIES.map(cat => `
-          <div class="cat-card" data-cat="${cat.id}">
-            <i class="fas ${cat.icon}"></i>
-            <h4>${cat.name}</h4>
-            <div class="muted">Explore</div>
-          </div>
-        `).join('');
-        document.querySelectorAll('.cat-card').forEach(el => {
-          el.addEventListener('click', () => {
-            const name = el.querySelector('h4').textContent;
-            searchInput.value = name;
-            filterProducts(name);
-            document.getElementById('categories').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        });
-      }
-
-      function renderProducts(list) {
-        if (!list.length) {
-          productsGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">No products found</div>`;
-          return;
-        }
-        productsGrid.innerHTML = list.map(p => `
-          <div class="product-card">
-            <img src="${p.img}" alt="${p.title}" loading="lazy">
-            <div class="product-body">
-              <h5>${p.title}</h5>
-              <div class="category-tag">${p.category}</div>
-              <div class="price-row">
-                <span class="price-current">$${p.price.toLocaleString()}</span>
-                ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}
-                <span class="rating">${'★'.repeat(Math.round(p.rating))} <span style="color:var(--muted);font-size:0.75rem;">(${p.reviews})</span></span>
-              </div>
-            </div>
-            <div class="product-footer">
-              <button class="add-btn" data-id="${p.id}"><i class="fas fa-plus"></i> Add</
+        { id: 1, title: 'iPhone 14 Pro Max', price: 1099, oldPrice: 1199, rating: 5, reviews: 128, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdb
