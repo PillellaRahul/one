@@ -891,5 +891,4 @@
               </div>
             </div>
             <div class="product-footer">
-              <button class="add-btn" data-id="${p.id}"><i class="fas fa-plus"></i> Add</button>
-              <button
+              <button class="add-btn" data-id="${p.id}"><i class="fas fa-plus"></i> Add</
