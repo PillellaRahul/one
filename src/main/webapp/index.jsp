@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NexusShop · Modern E‑Commerce</title>
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <title>Nexus · modern e‑commerce</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
@@ -13,18 +13,22 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     :root {
-      --bg: #f8faff;
+      --bg: #f4f7fc;
       --surface: #ffffff;
-      --primary: #0b1e33;
-      --accent: #2a7de1;
-      --accent-light: #e9f0fe;
-      --muted: #5e6f8d;
-      --shadow: 0 12px 30px -8px rgba(0, 20, 40, 0.08);
-      --radius: 20px;
-      --radius-sm: 14px;
-      --transition: all 0.2s ease;
+      --primary: #0a1929;
+      --accent: #2563eb;
+      --accent-soft: #dbe7fe;
+      --muted: #5b6f8c;
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --shadow-soft: 0 16px 40px -12px rgba(0, 20, 40, 0.10);
+      --shadow-hover: 0 24px 48px -16px rgba(37, 99, 235, 0.18);
+      --transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
     }
+
     body {
       font-family: 'Inter', -apple-system, system-ui, sans-serif;
       background: var(--bg);
@@ -32,83 +36,90 @@
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
+
     .container {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
     }
-    /* header */
+
+    /* ---- header ---- */
     header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,0,0,0.03);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 60;
     }
+
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
+      padding: 12px 0;
       gap: 12px;
       flex-wrap: wrap;
     }
+
     .brand {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-    .brand .accent {
-      color: var(--accent);
+      color: var(--primary);
+      text-decoration: none;
     }
     .brand i {
       color: var(--accent);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
+    .brand .highlight {
+      color: var(--accent);
+    }
+
     .nav-desktop {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
     .nav-desktop a {
-      padding: 8px 14px;
-      border-radius: 40px;
+      padding: 8px 18px;
+      border-radius: 60px;
       font-weight: 500;
       font-size: 0.95rem;
       color: var(--primary);
       transition: var(--transition);
       text-decoration: none;
     }
-    .nav-desktop a:hover,
-    .nav-desktop a:focus {
-      background: var(--accent-light);
+    .nav-desktop a:hover {
+      background: var(--accent-soft);
       color: var(--accent);
     }
+
     .search-wrap {
       display: flex;
       align-items: center;
-      background: var(--bg);
+      background: white;
       border-radius: 60px;
-      padding: 4px 6px 4px 18px;
-      border: 1px solid transparent;
+      padding: 4px 6px 4px 20px;
+      border: 1px solid #e6edf6;
       transition: var(--transition);
       min-width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     .search-wrap:focus-within {
       border-color: var(--accent);
-      background: white;
-      box-shadow: 0 4px 12px rgba(42, 125, 225, 0.08);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
     }
     .search-wrap input {
       border: none;
       background: transparent;
-      padding: 8px 0;
+      padding: 10px 0;
       font-size: 0.95rem;
       width: 100%;
       outline: none;
@@ -118,21 +129,22 @@
       background: var(--accent);
       border: none;
       color: white;
-      width: 38px;
-      height: 38px;
-      border-radius: 40px;
+      width: 42px;
+      height: 42px;
+      border-radius: 60px;
       cursor: pointer;
       font-size: 1rem;
       transition: var(--transition);
     }
     .search-wrap button:hover {
-      background: #1a5fb0;
-      transform: scale(0.96);
+      background: #1d4ed8;
+      transform: scale(0.94);
     }
+
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
     }
     .icon-btn {
       background: transparent;
@@ -140,7 +152,7 @@
       font-size: 1.2rem;
       color: var(--primary);
       padding: 8px;
-      border-radius: 40px;
+      border-radius: 60px;
       cursor: pointer;
       transition: var(--transition);
       width: 44px;
@@ -150,16 +162,17 @@
       justify-content: center;
     }
     .icon-btn:hover {
-      background: var(--accent-light);
+      background: var(--accent-soft);
       color: var(--accent);
     }
+
     .cart-wrapper {
       position: relative;
     }
     .cart-badge {
       position: absolute;
       top: -2px;
-      right: -4px;
+      right: -2px;
       background: var(--accent);
       color: white;
       font-size: 0.7rem;
@@ -170,8 +183,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 8px rgba(42, 125, 225, 0.3);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
     }
+
     .mobile-toggle {
       display: none;
       background: transparent;
@@ -180,95 +194,113 @@
       color: var(--primary);
       cursor: pointer;
     }
+
     /* mobile menu */
     .mobile-menu {
       display: none;
       background: white;
-      border-top: 1px solid rgba(0,0,0,0.03);
-      padding: 18px 0;
+      border-top: 1px solid rgba(0,0,0,0.02);
+      padding: 20px 0;
     }
     .mobile-menu a {
       display: block;
-      padding: 12px 0;
+      padding: 14px 0;
       font-weight: 500;
       border-bottom: 1px solid #f0f4fe;
       text-decoration: none;
       color: var(--primary);
     }
-    .mobile-menu a:last-child {
-      border-bottom: none;
-    }
-    /* hero */
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ---- hero ---- */
     .hero {
-      background: linear-gradient(145deg, #0b1e33 0%, #123456 100%);
-      border-radius: var(--radius);
-      padding: 60px 40px;
-      margin: 24px 0 32px;
+      background: linear-gradient(150deg, #0a1929 0%, #1a314b 100%);
+      border-radius: var(--radius-xl);
+      padding: 64px 48px;
+      margin: 28px 0 40px;
       color: white;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
     .hero-content {
-      max-width: 600px;
+      max-width: 560px;
+      position: relative;
+      z-index: 2;
     }
     .hero-content h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      line-height: 1.2;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.2rem;
+      line-height: 1.1;
       margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
     .hero-content p {
-      opacity: 0.85;
+      opacity: 0.8;
       font-size: 1.1rem;
-      margin-bottom: 24px;
-      max-width: 480px;
+      margin-bottom: 28px;
+      max-width: 440px;
     }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
+      gap: 10px;
+      padding: 14px 32px;
       border-radius: 60px;
       font-weight: 600;
-      border: none;
       font-size: 0.95rem;
+      border: none;
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none;
     }
-    .btn-primary {
+    .btn-primary-white {
       background: white;
-      color: #0b1e33;
+      color: #0a1929;
     }
-    .btn-primary:hover {
-      background: #eef4ff;
+    .btn-primary-white:hover {
+      background: #f0f5ff;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
     }
-    .btn-outline-light {
+    .btn-ghost-light {
       background: transparent;
-      border: 2px solid rgba(255,255,255,0.25);
+      border: 2px solid rgba(255,255,255,0.2);
       color: white;
     }
-    .btn-outline-light:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: white;
+    .btn-ghost-light:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.5);
     }
     .hero-illustration i {
-      font-size: 6rem;
-      opacity: 0.2;
+      font-size: 7rem;
+      opacity: 0.15;
       color: white;
+      position: relative;
+      z-index: 2;
     }
-    /* section */
+
+    /* ---- sections ---- */
     .section {
       margin: 48px 0;
     }
@@ -281,7 +313,7 @@
       gap: 12px;
     }
     .section-header h2 {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.8rem;
       font-weight: 600;
     }
@@ -290,88 +322,90 @@
       font-weight: 400;
       font-size: 0.95rem;
     }
+
+    /* categories */
     .grid-categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 16px;
     }
     .cat-card {
       background: var(--surface);
-      padding: 22px 10px;
-      border-radius: var(--radius-sm);
+      padding: 24px 12px;
+      border-radius: var(--radius-md);
       text-align: center;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
       transition: var(--transition);
       cursor: default;
       border: 1px solid rgba(0,0,0,0.02);
     }
     .cat-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 35px -10px rgba(0, 20, 40, 0.12);
-      border-color: var(--accent-light);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent-soft);
     }
     .cat-card i {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: block;
     }
     .cat-card h4 {
       font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-size: 1rem;
     }
     .cat-card .muted {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--muted);
     }
+
     /* products */
     .grid-products {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 24px;
     }
     .product-card {
       background: var(--surface);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
       border: 1px solid rgba(0,0,0,0.02);
     }
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.12);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
     }
     .product-card img {
       width: 100%;
-      height: 190px;
+      height: 200px;
       object-fit: cover;
       background: #f0f4fe;
     }
     .product-body {
-      padding: 16px 16px 12px;
+      padding: 16px 16px 10px;
       flex: 1;
     }
     .product-body h5 {
       font-weight: 600;
       font-size: 1rem;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .product-body .category-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 8px;
+      letter-spacing: 0.04em;
     }
     .price-row {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 8px;
     }
     .price-current {
       font-weight: 700;
@@ -384,11 +418,11 @@
     }
     .rating {
       color: #f4b642;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 1px;
     }
     .product-footer {
-      padding: 8px 16px 16px;
+      padding: 6px 16px 16px;
       display: flex;
       gap: 8px;
     }
@@ -397,8 +431,8 @@
       background: var(--primary);
       color: white;
       border: none;
-      padding: 10px;
-      border-radius: 40px;
+      padding: 12px;
+      border-radius: 60px;
       font-weight: 600;
       font-size: 0.9rem;
       display: flex;
@@ -414,8 +448,8 @@
     .product-footer .wish-btn {
       background: transparent;
       border: 1px solid #e9edf4;
-      width: 44px;
-      border-radius: 40px;
+      width: 48px;
+      border-radius: 60px;
       cursor: pointer;
       transition: var(--transition);
       font-size: 1rem;
@@ -426,45 +460,43 @@
       border-color: #ffb3b3;
       color: #e54a4a;
     }
+
     /* deal banner */
     .deal-banner {
-      background: linear-gradient(135deg, #f0f7ff, #ffffff);
-      border-radius: var(--radius);
+      background: white;
+      border-radius: var(--radius-xl);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 24px;
-      padding: 30px 32px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(42, 125, 225, 0.06);
+      gap: 28px;
+      padding: 32px 36px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(37,99,235,0.06);
     }
-    .deal-banner .deal-img {
-      flex: 1 1 200px;
-    }
-    .deal-banner .deal-img i {
+    .deal-banner .deal-icon i {
       font-size: 5rem;
       color: var(--accent);
-      opacity: 0.3;
+      opacity: 0.2;
     }
     .deal-banner .deal-content {
       flex: 2;
     }
     .deal-banner .deal-content h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.8rem;
-      font-family: 'Poppins', sans-serif;
     }
     .timer-box {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       margin: 16px 0;
     }
     .time-unit {
       background: var(--primary);
       color: white;
-      padding: 8px 14px;
-      border-radius: 12px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
       text-align: center;
-      min-width: 64px;
+      min-width: 68px;
     }
     .time-unit span {
       display: block;
@@ -495,11 +527,12 @@
     .deal-price .badge {
       background: #e74c3c;
       color: white;
-      padding: 4px 14px;
-      border-radius: 40px;
+      padding: 4px 16px;
+      border-radius: 60px;
       font-weight: 700;
       font-size: 0.8rem;
     }
+
     /* testimonials */
     .testimonials-scroll {
       display: flex;
@@ -509,11 +542,11 @@
       scrollbar-width: thin;
     }
     .testimonial-card {
-      min-width: 260px;
+      min-width: 270px;
       background: var(--surface);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
       border: 1px solid rgba(0,0,0,0.02);
     }
     .testimonial-card .stars {
@@ -521,60 +554,60 @@
       letter-spacing: 2px;
     }
     .testimonial-card p {
-      margin: 10px 0 12px;
+      margin: 12px 0 14px;
       font-size: 0.95rem;
-      color: #1f2a3e;
     }
     .testimonial-card .person {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .testimonial-card .person .avatar {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-light);
-      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      background: var(--accent-soft);
+      border-radius: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       color: var(--accent);
     }
+
     /* newsletter */
     .newsletter-box {
       background: var(--primary);
-      border-radius: var(--radius);
-      padding: 40px 32px;
+      border-radius: var(--radius-xl);
+      padding: 48px 36px;
       color: white;
       text-align: center;
     }
     .newsletter-box h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
     }
     .newsletter-box p {
       opacity: 0.8;
-      margin: 6px 0 20px;
+      margin: 6px 0 24px;
     }
     .newsletter-form {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
     .newsletter-form input {
-      padding: 14px 20px;
+      padding: 16px 24px;
       border-radius: 60px;
       border: none;
-      min-width: 260px;
+      min-width: 280px;
       font-size: 1rem;
     }
     .newsletter-form button {
       background: white;
       color: var(--primary);
       border: none;
-      padding: 14px 32px;
+      padding: 16px 36px;
       border-radius: 60px;
       font-weight: 700;
       cursor: pointer;
@@ -585,29 +618,30 @@
       transform: scale(0.97);
     }
     #newsletterMsg {
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 0.95rem;
     }
+
     /* footer */
     footer {
-      margin-top: 40px;
-      padding: 40px 0 24px;
+      margin-top: 48px;
+      padding: 48px 0 28px;
       border-top: 1px solid rgba(0,0,0,0.04);
     }
     .footer-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 36px;
+      gap: 40px;
       justify-content: space-between;
     }
     .footer-col p {
       color: var(--muted);
-      max-width: 280px;
+      max-width: 260px;
       margin-top: 8px;
     }
     .footer-social a {
       color: var(--muted);
-      margin-right: 14px;
+      margin-right: 16px;
       font-size: 1.2rem;
       transition: var(--transition);
     }
@@ -624,13 +658,13 @@
     }
     .footer-links h6 {
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .footer-links a {
       display: block;
       color: var(--muted);
       text-decoration: none;
-      padding: 4px 0;
+      padding: 6px 0;
       font-size: 0.9rem;
     }
     .footer-links a:hover {
@@ -638,20 +672,20 @@
     }
     .footer-copy {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 32px;
       color: var(--muted);
       font-size: 0.85rem;
     }
 
     /* responsive */
-    @media (max-width: 920px) {
+    @media (max-width: 960px) {
       .nav-desktop { display: none; }
       .mobile-toggle { display: inline-flex; }
       .search-wrap { min-width: 140px; }
     }
-    @media (max-width: 640px) {
-      .hero { padding: 32px 20px; text-align: center; justify-content: center; }
-      .hero-content h1 { font-size: 2rem; }
+    @media (max-width: 700px) {
+      .hero { padding: 36px 24px; text-align: center; justify-content: center; }
+      .hero-content h1 { font-size: 2.4rem; }
       .hero-content p { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
       .deal-banner { flex-direction: column; text-align: center; }
@@ -659,7 +693,7 @@
       .grid-products { grid-template-columns: 1fr 1fr; }
       .footer-grid { flex-direction: column; }
     }
-    @media (max-width: 440px) {
+    @media (max-width: 480px) {
       .grid-products { grid-template-columns: 1fr; }
       .header-inner { flex-wrap: wrap; }
       .search-wrap { order: 3; flex: 1 1 100%; }
@@ -669,9 +703,9 @@
 <body>
   <header>
     <div class="container header-inner">
-      <div style="display:flex;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:6px;">
         <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-        <a href="#" class="brand"><i class="fas fa-cube"></i> Nexus<span class="accent">Shop</span></a>
+        <a href="#" class="brand"><i class="fas fa-cube"></i> Nexus<span class="highlight">.</span></a>
       </div>
 
       <nav class="nav-desktop">
@@ -681,7 +715,7 @@
         <a href="#"><i class="fas fa-fire"></i> Trending</a>
       </nav>
 
-      <div style="display:flex;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:6px;">
         <div class="search-wrap">
           <input type="search" id="searchInput" placeholder="Search..." aria-label="Search">
           <button id="searchBtn"><i class="fas fa-arrow-right"></i></button>
@@ -710,11 +744,11 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-content">
-        <h1>New Season <br>Premium Picks</h1>
-        <p>Discover curated fashion, tech & accessories. Free shipping on orders over $50.</p>
+        <h1>New arrivals <br />for the season</h1>
+        <p>Curated style, tech & accessories. Free shipping on all orders.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop Now</button>
-          <button class="btn btn-outline-light" id="exploreDeals">Explore Deals</button>
+          <button class="btn btn-primary-white" id="shopNow"><i class="fas fa-arrow-right"></i> Shop now</button>
+          <button class="btn btn-ghost-light" id="exploreDeals">Explore deals</button>
         </div>
       </div>
       <div class="hero-illustration">
@@ -725,7 +759,7 @@
     <!-- Categories -->
     <section id="categories" class="section">
       <div class="section-header">
-        <h2>Shop by Category</h2>
+        <h2>Shop by category</h2>
         <span class="muted">Browse collections</span>
       </div>
       <div class="grid-categories" id="categoriesGrid"></div>
@@ -734,8 +768,8 @@
     <!-- Products -->
     <section class="section">
       <div class="section-header">
-        <h2>Trending Now</h2>
-        <span class="muted">Popular this week</span>
+        <h2>Trending now</h2>
+        <span class="muted">Most popular this week</span>
       </div>
       <div class="grid-products" id="productsGrid"></div>
     </section>
@@ -743,11 +777,11 @@
     <!-- Deal banner -->
     <section id="deals" class="section">
       <div class="deal-banner">
-        <div class="deal-img"><i class="fas fa-laptop"></i></div>
+        <div class="deal-icon"><i class="fas fa-laptop"></i></div>
         <div class="deal-content">
-          <h3>Flash Sale: MacBook Air M2</h3>
-          <p class="muted">Ultra‑thin, powerful, and now with a special discount.</p>
-          <div class="timer-box" id="timerBox">
+          <h3>Flash sale: MacBook Air M2</h3>
+          <p class="muted">Sleek, powerful, and now at a special price.</p>
+          <div class="timer-box">
             <div class="time-unit"><span id="dealDays">0</span><small>Days</small></div>
             <div class="time-unit"><span id="dealHours">00</span><small>Hrs</small></div>
             <div class="time-unit"><span id="dealMinutes">00</span><small>Min</small></div>
@@ -758,9 +792,9 @@
             <span class="old">$1,199</span>
             <span class="badge">-17%</span>
           </div>
-          <div style="margin-top: 12px; display:flex; gap:12px; flex-wrap:wrap;">
-            <button class="btn btn-primary" id="buyDeal"><i class="fas fa-cart-plus"></i> Buy Now</button>
-            <span style="background:#f0f4fe; padding:8px 16px; border-radius:40px; font-weight:500;">Only 12 left</span>
+          <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-primary-white" id="buyDeal" style="background:var(--primary);color:white;"><i class="fas fa-cart-plus"></i> Buy now</button>
+            <span style="background:var(--accent-soft); padding:8px 20px; border-radius:60px; font-weight:500;">Only 12 left</span>
           </div>
         </div>
       </div>
@@ -769,24 +803,24 @@
     <!-- Testimonials -->
     <section class="section">
       <div class="section-header">
-        <h2>Customer Stories</h2>
+        <h2>What customers say</h2>
         <span class="muted">Real reviews</span>
       </div>
       <div class="testimonials-scroll" id="testimonials">
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
-          <p>“Fast shipping and the quality is incredible. Will order again!”</p>
-          <div class="person"><div class="avatar">AM</div><div><strong>Ava M.</strong><div style="font-size:0.8rem;color:var(--muted)">Verified</div></div></div>
+          <p>“Incredible quality and super fast delivery. I’m a fan!”</p>
+          <div class="person"><div class="avatar">AM</div><div><strong>Ava M.</strong><div style="font-size:0.75rem;color:var(--muted)">Verified</div></div></div>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★☆</div>
-          <p>“Great selection, easy checkout. The customer support was very helpful.”</p>
-          <div class="person"><div class="avatar">ML</div><div><strong>Michael L.</strong><div style="font-size:0.8rem;color:var(--muted)">Frequent buyer</div></div></div>
+          <p>“Smooth checkout, great selection. Support was very helpful.”</p>
+          <div class="person"><div class="avatar">ML</div><div><strong>Michael L.</strong><div style="font-size:0.75rem;color:var(--muted)">Frequent buyer</div></div></div>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
-          <p>“Love the design and the prices. My new favourite store.”</p>
-          <div class="person"><div class="avatar">SR</div><div><strong>Sophia R.</strong><div style="font-size:0.8rem;color:var(--muted)">First time</div></div></div>
+          <p>“Love the minimalist design and the prices. New favourite.”</p>
+          <div class="person"><div class="avatar">SR</div><div><strong>Sophia R.</strong><div style="font-size:0.75rem;color:var(--muted)">First time</div></div></div>
         </div>
       </div>
     </section>
@@ -795,7 +829,7 @@
     <section class="section">
       <div class="newsletter-box">
         <h3>Stay in the loop</h3>
-        <p>Subscribe for exclusive offers & new arrivals</p>
+        <p>Subscribe for exclusive offers and early access</p>
         <form class="newsletter-form" id="newsletterForm" onsubmit="return false;">
           <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
           <button id="subscribeBtn">Subscribe</button>
@@ -808,7 +842,7 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-col">
-        <div style="font-weight:700; font-size:1.3rem;"><i class="fas fa-cube" style="color:var(--accent);"></i> NexusShop</div>
+        <div style="font-weight:700; font-size:1.4rem; font-family:'Space Grotesk',sans-serif;"><i class="fas fa-cube" style="color:var(--accent);"></i> Nexus.</div>
         <p>Modern e‑commerce demo built with care.</p>
         <div class="footer-social">
           <a href="#"><i class="fab fa-facebook"></i></a>
@@ -821,12 +855,12 @@
         <div><h6>Support</h6><a href="#">Help</a><a href="#">Returns</a><a href="#">Contact</a></div>
       </div>
     </div>
-    <div class="footer-copy">© <span id="year"></span> NexusShop. All rights reserved.</div>
+    <div class="footer-copy">© <span id="year"></span> Nexus. All rights reserved.</div>
   </footer>
 
   <script>
     (function() {
-      // ------ DATA ------
+      // -------- DATA --------
       const CATEGORIES = [
         { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-alt' },
         { id: 'laptops', name: 'Laptops', icon: 'fa-laptop' },
@@ -847,14 +881,14 @@
         { id: 8, title: 'Sony WH-1000XM5', price: 399, oldPrice: null, rating: 5, reviews: 156, img: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=400&q=80', category: 'gadgets' }
       ];
 
-      // ------ STATE ------
+      // -------- STATE --------
       let cartCount = 0;
       const cartCountEl = document.getElementById('cartCount');
       const categoriesGrid = document.getElementById('categoriesGrid');
       const productsGrid = document.getElementById('productsGrid');
       const searchInput = document.getElementById('searchInput');
 
-      // ------ RENDER ------
+      // -------- RENDER --------
       function renderCategories() {
         categoriesGrid.innerHTML = CATEGORIES.map(cat => `
           <div class="cat-card" data-cat="${cat.id}">
@@ -884,12 +918,4 @@
             <div class="product-body">
               <h5>${p.title}</h5>
               <div class="category-tag">${p.category}</div>
-              <div class="price-row">
-                <span class="price-current">$${p.price.toLocaleString()}</span>
-                ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}
-                <span class="rating">${'★'.repeat(Math.round(p.rating))} <span style="color:var(--muted);font-size:0.75rem;">(${p.reviews})</span></span>
-              </div>
-            </div>
-            <div class="product-footer">
-              <button class="add-btn" data-id="${p.id}"><i class="fas fa-plus"></i> Add</button>
-              <button
+              <div class="
