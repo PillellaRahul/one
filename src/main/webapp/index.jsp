@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nexus · graphical e‑commerce</title>
+  <title>Nexus · 3D graphical e‑commerce</title>
   <!-- Google Fonts & Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -15,8 +15,8 @@
     }
 
     :root {
-      --bg: #f0f4fe;
-      --surface: #ffffff;
+      --bg: #eef2f9;
+      --surface: rgba(255, 255, 255, 0.7);
       --primary: #0b1a2e;
       --accent: #2a7de1;
       --accent-glow: #d4e2fc;
@@ -24,9 +24,9 @@
       --radius-xl: 32px;
       --radius-lg: 20px;
       --radius-md: 16px;
-      --shadow-card: 0 20px 40px -12px rgba(0, 20, 40, 0.12);
-      --shadow-hover: 0 28px 56px -16px rgba(42, 125, 225, 0.22);
-      --transition: 0.3s cubic-bezier(0.2, 0, 0, 1);
+      --shadow-card: 0 20px 40px -12px rgba(0, 20, 40, 0.15);
+      --shadow-hover: 0 32px 64px -16px rgba(42, 125, 225, 0.25);
+      --transition: 0.35s cubic-bezier(0.2, 0, 0, 1);
     }
 
     body {
@@ -35,6 +35,7 @@
       color: var(--primary);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      perspective: 1200px;
     }
 
     .container {
@@ -43,15 +44,17 @@
       padding: 0 28px;
     }
 
-    /* ---- header with glass effect ---- */
+    /* ---- 3D header with glass + depth ---- */
     header {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(18px) saturate(1.3);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
       position: sticky;
       top: 0;
       z-index: 60;
+      transform-style: preserve-3d;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
     }
 
     .header-inner {
@@ -73,6 +76,8 @@
       gap: 8px;
       color: var(--primary);
       text-decoration: none;
+      transform: translateZ(20px);
+      transition: var(--transition);
     }
     .brand i {
       background: var(--accent);
@@ -80,12 +85,14 @@
       padding: 6px 8px;
       border-radius: 14px;
       font-size: 1.2rem;
+      box-shadow: 0 8px 20px rgba(42,125,225,0.25);
     }
 
     .nav-desktop {
       display: flex;
       align-items: center;
       gap: 2px;
+      transform: translateZ(10px);
     }
     .nav-desktop a {
       padding: 8px 20px;
@@ -95,26 +102,32 @@
       color: var(--primary);
       transition: var(--transition);
       text-decoration: none;
+      backdrop-filter: blur(4px);
     }
     .nav-desktop a:hover {
-      background: rgba(42, 125, 225, 0.10);
+      background: rgba(42, 125, 225, 0.12);
       color: var(--accent);
+      transform: translateZ(16px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(42,125,225,0.10);
     }
 
     .search-wrap {
       display: flex;
       align-items: center;
-      background: white;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
       border-radius: 60px;
       padding: 4px 6px 4px 22px;
-      border: 1px solid rgba(42, 125, 225, 0.10);
+      border: 1px solid rgba(255,255,255,0.6);
       transition: var(--transition);
       min-width: 200px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+      transform: translateZ(8px);
     }
     .search-wrap:focus-within {
       border-color: var(--accent);
-      box-shadow: 0 6px 24px rgba(42, 125, 225, 0.12);
+      box-shadow: 0 8px 32px rgba(42, 125, 225, 0.15);
+      transform: translateZ(20px) scale(1.02);
     }
     .search-wrap input {
       border: none;
@@ -135,10 +148,11 @@
       cursor: pointer;
       font-size: 1rem;
       transition: var(--transition);
+      box-shadow: 0 6px 16px rgba(42,125,225,0.25);
     }
     .search-wrap button:hover {
       background: #1a5fb0;
-      transform: scale(0.94);
+      transform: scale(0.94) translateZ(12px);
     }
 
     .header-actions {
@@ -160,10 +174,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      backdrop-filter: blur(4px);
     }
     .icon-btn:hover {
-      background: rgba(42, 125, 225, 0.08);
+      background: rgba(42, 125, 225, 0.10);
       color: var(--accent);
+      transform: translateZ(16px) scale(1.05);
     }
 
     .cart-wrapper {
@@ -183,7 +199,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(42, 125, 225, 0.3);
+      box-shadow: 0 6px 16px rgba(42, 125, 225, 0.35);
     }
 
     .mobile-toggle {
@@ -197,7 +213,8 @@
 
     .mobile-menu {
       display: none;
-      background: white;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
       border-top: 1px solid rgba(0,0,0,0.02);
       padding: 20px 0;
     }
@@ -205,13 +222,12 @@
       display: block;
       padding: 14px 0;
       font-weight: 500;
-      border-bottom: 1px solid #f0f4fe;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
       text-decoration: none;
       color: var(--primary);
     }
-    .mobile-menu a:last-child { border-bottom: none; }
 
-    /* ---- hero with graphic elements ---- */
+    /* ---- 3D hero with depth layers ---- */
     .hero {
       background: linear-gradient(145deg, #0b1a2e 0%, #1d3853 100%);
       border-radius: var(--radius-xl);
@@ -225,44 +241,51 @@
       gap: 28px;
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,0.3);
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(42,125,225,0.18) 0%, transparent 70%);
+      top: -80px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(42,125,225,0.15) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      transform: rotateX(20deg) rotateY(-10deg);
     }
     .hero::after {
       content: '';
       position: absolute;
-      bottom: -80px;
-      left: 20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      bottom: -100px;
+      left: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      transform: rotateX(30deg);
     }
     .hero-content {
       max-width: 540px;
       position: relative;
       z-index: 2;
+      transform: translateZ(30px);
     }
     .hero-content .tag {
       display: inline-block;
-      background: rgba(255,255,255,0.10);
-      padding: 6px 18px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      padding: 6px 20px;
       border-radius: 60px;
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.03em;
       margin-bottom: 16px;
       border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
     }
     .hero-content h1 {
       font-family: 'Space Grotesk', sans-serif;
@@ -270,6 +293,7 @@
       line-height: 1.1;
       margin-bottom: 14px;
       letter-spacing: -0.02em;
+      text-shadow: 0 8px 32px rgba(0,0,0,0.20);
     }
     .hero-content h1 span {
       background: linear-gradient(120deg, #82b1ff, #a0c4ff);
@@ -278,10 +302,11 @@
       background-clip: text;
     }
     .hero-content p {
-      opacity: 0.8;
+      opacity: 0.85;
       font-size: 1.1rem;
       margin-bottom: 28px;
       max-width: 420px;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.10);
     }
     .hero-actions {
       display: flex;
@@ -300,48 +325,70 @@
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none;
+      transform: translateZ(10px);
     }
     .btn-primary {
       background: white;
       color: #0b1a2e;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
     }
     .btn-primary:hover {
       background: #f0f5ff;
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.20);
+      transform: translateZ(24px) scale(1.03);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.25);
     }
     .btn-ghost {
       background: transparent;
       border: 2px solid rgba(255,255,255,0.15);
       color: white;
+      backdrop-filter: blur(4px);
     }
     .btn-ghost:hover {
       background: rgba(255,255,255,0.06);
       border-color: rgba(255,255,255,0.4);
+      transform: translateZ(20px) scale(1.02);
     }
+
     .hero-graphic {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       align-items: center;
       position: relative;
       z-index: 2;
+      transform-style: preserve-3d;
     }
     .hero-graphic .orb {
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle at 30% 30%, rgba(42,125,225,0.6), rgba(42,125,225,0.1));
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, rgba(42,125,225,0.5), rgba(42,125,225,0.05));
       border-radius: 50%;
-      filter: blur(2px);
-      backdrop-filter: blur(4px);
+      filter: blur(4px);
+      backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.06);
+      transform: rotateX(20deg) rotateY(30deg) translateZ(40px);
+      box-shadow: 0 20px 60px rgba(42,125,225,0.15);
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-graphic .orb:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent);
+      animation-delay: 2s;
     }
     .hero-graphic i {
-      font-size: 5rem;
-      opacity: 0.15;
+      font-size: 5.5rem;
+      opacity: 0.12;
       color: white;
+      transform: translateZ(60px) rotateX(10deg);
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
     }
 
-    /* ---- sections ---- */
+    @keyframes float {
+      0%, 100% { transform: rotateX(20deg) rotateY(30deg) translateZ(40px) translateY(0); }
+      50% { transform: rotateX(20deg) rotateY(30deg) translateZ(50px) translateY(-16px); }
+    }
+
+    /* ---- sections with 3D cards ---- */
     .section {
       margin: 48px 0;
     }
@@ -357,13 +404,14 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.9rem;
       font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     .section-header .muted {
       color: var(--muted);
       font-weight: 400;
     }
 
-    /* categories with gradient cards */
+    /* categories with 3D hover */
     .grid-categories {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -371,28 +419,19 @@
     }
     .cat-card {
       background: var(--surface);
+      backdrop-filter: blur(12px);
       padding: 26px 12px;
       border-radius: var(--radius-lg);
       text-align: center;
       box-shadow: var(--shadow-card);
       transition: var(--transition);
       cursor: default;
-      border: 1px solid rgba(0,0,0,0.02);
-      position: relative;
-      overflow: hidden;
-    }
-    .cat-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(42,125,225,0.03), transparent);
-      pointer-events: none;
+      border: 1px solid rgba(255,255,255,0.5);
+      transform-style: preserve-3d;
+      transform: translateZ(0);
     }
     .cat-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px) translateZ(30px) rotateX(4deg);
       box-shadow: var(--shadow-hover);
       border-color: var(--accent-glow);
     }
@@ -401,6 +440,7 @@
       color: var(--accent);
       margin-bottom: 10px;
       display: block;
+      transform: translateZ(20px);
     }
     .cat-card h4 {
       font-weight: 600;
@@ -411,7 +451,7 @@
       color: var(--muted);
     }
 
-    /* products with graphical flair */
+    /* products with 3D flip / depth */
     .grid-products {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -419,17 +459,19 @@
     }
     .product-card {
       background: var(--surface);
+      backdrop-filter: blur(12px);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-card);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,0,0,0.02);
-      position: relative;
+      border: 1px solid rgba(255,255,255,0.5);
+      transform-style: preserve-3d;
+      transform: translateZ(0);
     }
     .product-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px) translateZ(40px) rotateX(3deg);
       box-shadow: var(--shadow-hover);
     }
     .product-card .img-wrap {
@@ -444,7 +486,7 @@
       transition: var(--transition);
     }
     .product-card:hover .img-wrap img {
-      transform: scale(1.02);
+      transform: scale(1.04) translateZ(10px);
     }
     .product-card .badge {
       position: absolute;
@@ -456,7 +498,8 @@
       border-radius: 60px;
       font-size: 0.7rem;
       font-weight: 700;
-      box-shadow: 0 4px 12px rgba(42,125,225,0.2);
+      box-shadow: 0 8px 20px rgba(42,125,225,0.25);
+      transform: translateZ(20px);
     }
     .product-body {
       padding: 16px 16px 8px;
@@ -514,29 +557,34 @@
       gap: 8px;
       cursor: pointer;
       transition: var(--transition);
+      transform: translateZ(4px);
     }
     .product-footer .add-btn:hover {
       background: var(--accent);
+      transform: translateZ(20px) scale(1.02);
     }
     .product-footer .wish-btn {
       background: transparent;
-      border: 1px solid #e9edf4;
+      border: 1px solid rgba(0,0,0,0.06);
       width: 50px;
       border-radius: 60px;
       cursor: pointer;
       transition: var(--transition);
       font-size: 1rem;
       color: var(--muted);
+      backdrop-filter: blur(4px);
     }
     .product-footer .wish-btn:hover {
       background: #fef0f0;
       border-color: #ffb3b3;
       color: #e54a4a;
+      transform: translateZ(16px) scale(1.05);
     }
 
-    /* deal banner with graphic overlay */
+    /* deal banner 3D */
     .deal-banner {
-      background: white;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(16px);
       border-radius: var(--radius-xl);
       display: flex;
       flex-wrap: wrap;
@@ -544,25 +592,28 @@
       gap: 30px;
       padding: 28px 36px;
       box-shadow: var(--shadow-card);
-      border: 1px solid rgba(42,125,225,0.06);
+      border: 1px solid rgba(255,255,255,0.5);
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
     }
     .deal-banner::before {
       content: '';
       position: absolute;
       right: -80px;
       top: -80px;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(42,125,225,0.05), transparent 70%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(42,125,225,0.06), transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      transform: rotateX(30deg);
     }
     .deal-banner .deal-icon i {
       font-size: 5rem;
       color: var(--accent);
-      opacity: 0.15;
+      opacity: 0.12;
+      transform: translateZ(30px);
     }
     .deal-banner .deal-content {
       flex: 2;
@@ -585,6 +636,8 @@
       border-radius: var(--radius-md);
       text-align: center;
       min-width: 72px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateZ(12px);
     }
     .time-unit span {
       display: block;
@@ -619,9 +672,10 @@
       border-radius: 60px;
       font-weight: 700;
       font-size: 0.8rem;
+      box-shadow: 0 4px 16px rgba(231,76,60,0.2);
     }
 
-    /* testimonials with gradient avatars */
+    /* testimonials 3D */
     .testimonials-scroll {
       display: flex;
       gap: 24px;
@@ -632,14 +686,17 @@
     .testimonial-card {
       min-width: 280px;
       background: var(--surface);
+      backdrop-filter: blur(12px);
       border-radius: var(--radius-lg);
       padding: 24px;
       box-shadow: var(--shadow-card);
-      border: 1px solid rgba(0,0,0,0.02);
+      border: 1px solid rgba(255,255,255,0.5);
       transition: var(--transition);
+      transform-style: preserve-3d;
     }
     .testimonial-card:hover {
       box-shadow: var(--shadow-hover);
+      transform: translateZ(24px) rotateX(2deg);
     }
     .testimonial-card .stars {
       color: #f4b642;
@@ -664,9 +721,11 @@
       font-weight: 700;
       color: white;
       background: linear-gradient(135deg, var(--accent), #6aa6ff);
+      box-shadow: 0 8px 24px rgba(42,125,225,0.2);
+      transform: translateZ(12px);
     }
 
-    /* newsletter with graphical bg */
+    /* newsletter 3D */
     .newsletter-box {
       background: var(--primary);
       border-radius: var(--radius-xl);
@@ -675,21 +734,25 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,0.2);
     }
     .newsletter-box::before {
       content: '';
       position: absolute;
       top: -40%;
       right: -20%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(42,125,225,0.08), transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(42,125,225,0.06), transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      transform: rotateX(30deg);
     }
     .newsletter-box h3 {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 2.2rem;
+      transform: translateZ(20px);
     }
     .newsletter-box p {
       opacity: 0.8;
@@ -709,6 +772,13 @@
       border: none;
       min-width: 300px;
       font-size: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateZ(12px);
+      transition: var(--transition);
+    }
+    .newsletter-form input:focus {
+      transform: translateZ(24px) scale(1.02);
+      outline: none;
     }
     .newsletter-form button {
       background: white;
@@ -719,10 +789,12 @@
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateZ(12px);
     }
     .newsletter-form button:hover {
       background: #eef4ff;
-      transform: scale(0.97);
+      transform: translateZ(28px) scale(1.03);
     }
     #newsletterMsg {
       margin-top: 18px;
@@ -754,6 +826,8 @@
     }
     .footer-social a:hover {
       color: var(--accent);
+      transform: translateZ(16px);
+      display: inline-block;
     }
     .footer-links {
       display: flex;
@@ -773,9 +847,11 @@
       text-decoration: none;
       padding: 6px 0;
       font-size: 0.9rem;
+      transition: var(--transition);
     }
     .footer-links a:hover {
       color: var(--primary);
+      transform: translateX(6px);
     }
     .footer-copy {
       text-align: center;
@@ -849,7 +925,7 @@
   </header>
 
   <main class="container">
-    <!-- Hero with graphic -->
+    <!-- Hero 3D -->
     <section class="hero">
       <div class="hero-content">
         <div class="tag"><i class="fas fa-star" style="margin-right:6px;"></i> New collection</div>
@@ -863,7 +939,7 @@
       <div class="hero-graphic">
         <div class="orb"></div>
         <i class="fas fa-cube"></i>
-        <div class="orb" style="width:70px;height:70px;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent);"></div>
+        <div class="orb" style="width:80px;height:80px;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), transparent);"></div>
       </div>
     </section>
 
@@ -885,7 +961,7 @@
       <div class="grid-products" id="productsGrid"></div>
     </section>
 
-    <!-- Deal banner -->
+    <!-- Deal banner 3D -->
     <section id="deals" class="section">
       <div class="deal-banner">
         <div class="deal-icon"><i class="fas fa-laptop"></i></div>
@@ -898,88 +974,4 @@
             <div class="time-unit"><span id="dealMinutes">00</span><small>Min</small></div>
             <div class="time-unit"><span id="dealSeconds">00</span><small>Sec</small></div>
           </div>
-          <div class="deal-price">
-            <span class="big">$999</span>
-            <span class="old">$1,199</span>
-            <span class="badge">-17%</span>
-          </div>
-          <div style="margin-top:16px; display:flex; gap:14px; flex-wrap:wrap;">
-            <button class="btn btn-primary" id="buyDeal" style="background:var(--primary);color:white;"><i class="fas fa-cart-plus"></i> Buy now</button>
-            <span style="background:var(--accent-glow); padding:8px 22px; border-radius:60px; font-weight:600;">Only 12 left</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Customer stories</h2>
-        <span class="muted">Real reviews</span>
-      </div>
-      <div class="testimonials-scroll" id="testimonials">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>“Incredible quality and super fast delivery. I’m a fan!”</p>
-          <div class="person"><div class="avatar">AM</div><div><strong>Ava M.</strong><div style="font-size:0.75rem;color:var(--muted)">Verified</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★☆</div>
-          <p>“Smooth checkout, great selection. Support was very helpful.”</p>
-          <div class="person"><div class="avatar">ML</div><div><strong>Michael L.</strong><div style="font-size:0.75rem;color:var(--muted)">Frequent buyer</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>“Love the design and the prices. My new favourite store.”</p>
-          <div class="person"><div class="avatar">SR</div><div><strong>Sophia R.</strong><div style="font-size:0.75rem;color:var(--muted)">First time</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="section">
-      <div class="newsletter-box">
-        <h3>Stay in the loop</h3>
-        <p>Subscribe for exclusive offers and early access</p>
-        <form class="newsletter-form" id="newsletterForm" onsubmit="return false;">
-          <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
-          <button id="subscribeBtn">Subscribe</button>
-        </form>
-        <div id="newsletterMsg"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <div style="font-weight:700; font-size:1.5rem; font-family:'Space Grotesk',sans-serif;"><i class="fas fa-cube" style="color:var(--accent);"></i> Nexus</div>
-        <p>Modern e‑commerce demo with a graphical edge.</p>
-        <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <div><h6>Company</h6><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a></div>
-        <div><h6>Support</h6><a href="#">Help</a><a href="#">Returns</a><a href="#">Contact</a></div>
-      </div>
-    </div>
-    <div class="footer-copy">© <span id="year"></span> Nexus. All rights reserved.</div>
-  </footer>
-
-  <script>
-    (function() {
-      // -------- DATA --------
-      const CATEGORIES = [
-        { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-alt' },
-        { id: 'laptops', name: 'Laptops', icon: 'fa-laptop' },
-        { id: 'clothing', name: 'Clothing', icon: 'fa-tshirt' },
-        { id: 'gadgets', name: 'Gadgets', icon: 'fa-headphones' },
-        { id: 'footwear', name: 'Footwear', icon: 'fa-shoe-prints' },
-        { id: 'accessories', name: 'Accessories', icon: 'fa-watch' }
-      ];
-
-      const PRODUCTS = [
-        { id: 1, title: 'iPhone 14 Pro Max', price: 1099, oldPrice: 1199, rating: 5, reviews: 128, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdb
+          <div
